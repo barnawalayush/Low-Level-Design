@@ -30,10 +30,10 @@ public class Game {
 
             try {
                 board.placePiece(row, col, currentPlayer.getPieces());
-                players.offer(currentPlayer);
+                players.addLast(currentPlayer);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage() + ". Try again.");
-                players.offerFirst(currentPlayer); // Re-add the player to the front of the queue
+                players.addFirst(currentPlayer); // Re-add the player to the front of the queue
                 continue;
             }
 
@@ -52,7 +52,7 @@ public class Game {
         Player player1 = new Player("Player 1", new PlayingPiecesX(Pieces.X));
         Player player2 = new Player("Player 2", new PlayingPiecesO(Pieces.O));
 
-        players = new ArrayDeque<>();
+        players = new LinkedList<>();
         players.add(player1);
         players.add(player2);
     }
